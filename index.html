@@ -29,14 +29,14 @@
     }
   
     /* Menú principal */
-    nav {
+    .menu-principal {
       display: flex;
       justify-content: center;
       background: #e3e3e3;
       padding: 18px;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
-    nav a {
+    .menu-principal a {
       color: #333;
       text-decoration: none;
       padding: 13px 25px;
@@ -46,7 +46,7 @@
       transition: 0.3s;
       background: rgba(0, 0, 0, 0.1);
     }
-    nav a:hover {
+    .menu-principal a:hover {
       background: rgba(0, 0, 0, 0.2);
       transform: scale(1.05);
     }
@@ -230,7 +230,7 @@
         padding: 25px;
       }
   
-      nav a {
+      .menu-principal a {
         font-size: 16px;
         padding: 12px 20px;
       }
@@ -266,24 +266,27 @@
         padding: 15px;
       }
   
-      /* Ahora ambos menús se muestran en fila */
-      nav {
+      /* Forzar que el menú principal se muestre en fila */
+      .menu-principal {
+        display: flex;
         flex-direction: row;
+        justify-content: center;
       }
-      nav a {
+      .menu-principal a {
         margin: 0 10px;
         font-size: 14px;
         padding: 10px;
       }
   
-      /* Para el menú de secciones se mantiene el estilo en fila */
+      /* El menú de secciones ya se muestra en fila */
       .menu-secciones {
         display: flex;
         flex-direction: row;
       }
-  
       .menu-secciones a {
         margin: 0 10px;
+        font-size: 14px;
+        padding: 10px;
       }
   
       .barra-mensaje {
@@ -303,8 +306,8 @@
   </style>
 </head>
 <body>
-  <!-- Menú principal -->
-  <nav>
+  <!-- Menú principal con clase "menu-principal" -->
+  <nav class="menu-principal">
     <a href="index.html">Shop</a>
     <a href="sobre-nosotros.html">Remesas</a>
     <a href="calculadora.html">Carrito</a>
