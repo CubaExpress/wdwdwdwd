@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubaExpress - Envíos a Cuba</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            color: #333;
+            font-size: 16px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #e3e3e3;
+            padding: 18px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 13px 25px;
+            font-size: 18px;
+            margin: 0 10px;
+            border-radius: 12px;
+            transition: 0.3s;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        nav a:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .barra-mensaje {
+            background: linear-gradient(135deg, #8fd3f4, #84c1f5);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mensaje {
+            position: absolute;
+            left: 100%;
+            animation: moverMensaje 12s linear infinite;
+        }
+
+        @keyframes moverMensaje {
+            0% { left: 100%; }
+            100% { left: -100%; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros.html">Sobre Nosotros</a>
+        <a href="calculadora.html">Calculadora de Envíos</a>
+    </nav>
+
+    <div class="barra-mensaje">
+        <span class="mensaje">¡Aprovecha un 15% de descuento en tu envío! 📦 Envíos rápidos y seguros a Cuba.</span>
+    </div>
+</body>
+</html>
