@@ -266,18 +266,17 @@
         padding: 15px;
       }
   
-      /* El nav principal se mantiene en columna para el header */
+      /* Ahora ambos menús se muestran en fila */
       nav {
-        flex-direction: column;
+        flex-direction: row;
       }
-  
       nav a {
-        margin: 5px 0;
+        margin: 0 10px;
         font-size: 14px;
         padding: 10px;
       }
   
-      /* Se sobrescribe el comportamiento para el nav de secciones, que ahora se mostrará en fila */
+      /* Para el menú de secciones se mantiene el estilo en fila */
       .menu-secciones {
         display: flex;
         flex-direction: row;
@@ -321,7 +320,7 @@
       <p>Enviamos tus paquetes a Cuba de manera rápida y segura.</p>
     </section>
   
-    <!-- Menú de secciones: se le asigna la clase "menu-secciones" para mantenerlo en fila en móviles -->
+    <!-- Menú de secciones -->
     <section id="menu">
       <nav class="menu-secciones">
         <a href="#alimentos">Alimentos</a>
