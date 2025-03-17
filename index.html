@@ -1,418 +1,407 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CubaExpress - Envíos a Cuba</title>
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>CubaExpress - Envíos a Cuba</title>
-      <!DOCTYPE html>
-      <html lang="es">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CubaMax</title>
-
-
-        <style>
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-          }
-        
-          body {
-            background-color: #fafafa; /* Gris muy claro */
-            color: #333;
-            font-size: 16px;
-          }
-        
-          header {
-            background: #4e4e9f; /* Azul suave y moderno */
-            color: white;
-            padding: 30px;
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            border-bottom: 4px solid #3b3b8f; /* Detalle oscuro para contraste */
-          }
-        
-          /* Se reemplaza el menú y el mensaje por los estilos anteriores */
-          nav {
-            display: flex;
-            justify-content: center;
-            background: #e3e3e3;
-            padding: 18px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-          }
-          nav a {
-            color: #333;
-            text-decoration: none;
-            padding: 13px 25px;
-            font-size: 18px;
-            margin: 0 10px;
-            border-radius: 12px;
-            transition: 0.3s;
-            background: rgba(0, 0, 0, 0.1);
-          }
-          nav a:hover {
-            background: rgba(0, 0, 0, 0.2);
-            transform: scale(1.05);
-          }
-        
-          .barra-mensaje {
-            background: linear-gradient(135deg, #8fd3f4, #84c1f5);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            white-space: nowrap;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .mensaje {
-            position: absolute;
-            left: 100%;
-            animation: moverMensaje 12s linear infinite;
-          }
-          @keyframes moverMensaje {
-            0% { left: 100%; }
-            100% { left: -100%; }
-          }
-        
-          section {
-            padding: 60px 20px;
-            text-align: center;
-            background: #ffffff;
-            margin-top: 30px;
-            border-radius: 12px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-          }
-        
-          section h2 {
-            font-size: 34px;
-            color: #4e4e9f; /* Azul suave para títulos */
-            margin-bottom: 20px;
-          }
-        
-          section p {
-            font-size: 18px;
-            color: #666;
-          }
-        
-          .productos-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            justify-items: center;
-            margin: 0 auto;
-          }
-        
-          .producto {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            width: 280px;
-            height: 420px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s forwards;
-          }
-        
-          .producto img {
-            width: 100%;
-            height: 160px;
-            object-fit: contain;
-            border-radius: 8px;
-            transition: transform 0.3s ease-in-out;
-          }
-        
-          .producto img:hover {
-            transform: scale(1.1);
-          }
-        
-          .precio {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #00aaff; /* Azul vibrante para los precios */
-          }
-        
-          .botones {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-          }
-        
-          .botones button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 18px;
-          }
-        
-          .botones button:hover {
-            transform: translateY(-2px);
-          }
-        
-          .agregar-carrito {
-            background-color: #56c596; /* Verde suave */
-            color: white;
-          }
-        
-          .agregar-carrito:hover {
-            background-color: #4ca97a;
-          }
-        
-          .detalles {
-            background-color: #ffab00; /* Amarillo brillante para detalles */
-            color: white;
-          }
-        
-          .detalles:hover {
-            background-color: #ff9100;
-          }
-        
-          .cartel-detalles {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.3s forwards;
-          }
-        
-          .cartel-detalles button {
-            margin-top: 12px;
-            padding: 10px 18px;
-            border: none;
-            background: #d9534f;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-          }
-        
-          .cartel-detalles button:hover {
-            background-color: #c9302c;
-          }
-        
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-        
-          @media screen and (max-width: 768px) {
-            header {
-              font-size: 28px;
-              padding: 25px;
-            }
-        
-            nav a {
-              font-size: 16px;
-              padding: 12px 20px;
-            }
-        
-            .barra-mensaje {
-              font-size: 18px;
-              padding: 20px;
-            }
-        
-            section {
-              padding: 40px 15px;
-            }
-        
-            .productos-container {
-              grid-template-columns: 1fr;
-              gap: 15px;
-            }
-        
-            .producto {
-              width: 90%;
-              height: auto;
-            }
-        
-            .botones button {
-              font-size: 15px;
-              padding: 10px;
-            }
-          }
-        
-          @media screen and (max-width: 480px) {
-            header {
-              font-size: 24px;
-              padding: 15px;
-            }
-        
-            nav {
-              flex-direction: column;
-            }
-        
-            nav a {
-              margin: 5px 0;
-              font-size: 14px;
-              padding: 10px;
-            }
-        
-            .barra-mensaje {
-              font-size: 16px;
-              padding: 14px;
-            }
-        
-            section {
-              padding: 20px 10px;
-            }
-        
-            .botones button {
-              font-size: 14px;
-              padding: 8px;
-            }
-          }
-        </style>
-        
-        
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CubaMax</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+  
+    body {
+      background-color: #fafafa; /* Gris muy claro */
+      color: #333;
+      font-size: 16px;
+    }
+  
+    header {
+      background: #4e4e9f; /* Azul suave y moderno */
+      color: white;
+      padding: 30px;
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      border-bottom: 4px solid #3b3b8f; /* Detalle oscuro para contraste */
+    }
+  
+    /* Menú principal */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #e3e3e3;
+      padding: 18px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 13px 25px;
+      font-size: 18px;
+      margin: 0 10px;
+      border-radius: 12px;
+      transition: 0.3s;
+      background: rgba(0, 0, 0, 0.1);
+    }
+    nav a:hover {
+      background: rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+  
+    .barra-mensaje {
+      background: linear-gradient(135deg, #8fd3f4, #84c1f5);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mensaje {
+      position: absolute;
+      left: 100%;
+      animation: moverMensaje 12s linear infinite;
+    }
+    @keyframes moverMensaje {
+      0% { left: 100%; }
+      100% { left: -100%; }
+    }
+  
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      background: #ffffff;
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    }
+  
+    section h2 {
+      font-size: 34px;
+      color: #4e4e9f; /* Azul suave para títulos */
+      margin-bottom: 20px;
+    }
+  
+    section p {
+      font-size: 18px;
+      color: #666;
+    }
+  
+    .productos-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      justify-items: center;
+      margin: 0 auto;
+    }
+  
+    .producto {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 280px;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+  
+    .producto img {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .producto img:hover {
+      transform: scale(1.1);
+    }
+  
+    .precio {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0;
+      color: #00aaff; /* Azul vibrante para los precios */
+    }
+  
+    .botones {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+  
+    .botones button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 18px;
+    }
+  
+    .botones button:hover {
+      transform: translateY(-2px);
+    }
+  
+    .agregar-carrito {
+      background-color: #56c596; /* Verde suave */
+      color: white;
+    }
+  
+    .agregar-carrito:hover {
+      background-color: #4ca97a;
+    }
+  
+    .detalles {
+      background-color: #ffab00; /* Amarillo brillante para detalles */
+      color: white;
+    }
+  
+    .detalles:hover {
+      background-color: #ff9100;
+    }
+  
+    .cartel-detalles {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s forwards;
+    }
+  
+    .cartel-detalles button {
+      margin-top: 12px;
+      padding: 10px 18px;
+      border: none;
+      background: #d9534f;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  
+    .cartel-detalles button:hover {
+      background-color: #c9302c;
+    }
+  
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  
+    @media screen and (max-width: 768px) {
+      header {
+        font-size: 28px;
+        padding: 25px;
+      }
+  
+      nav a {
+        font-size: 16px;
+        padding: 12px 20px;
+      }
+  
+      .barra-mensaje {
+        font-size: 18px;
+        padding: 20px;
+      }
+  
+      section {
+        padding: 40px 15px;
+      }
+  
+      .productos-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+  
+      .producto {
+        width: 90%;
+        height: auto;
+      }
+  
+      .botones button {
+        font-size: 15px;
+        padding: 10px;
+      }
+    }
+  
+    @media screen and (max-width: 480px) {
+      header {
+        font-size: 24px;
+        padding: 15px;
+      }
+  
+      /* El nav principal se mantiene en columna para el header */
+      nav {
+        flex-direction: column;
+      }
+  
+      nav a {
+        margin: 5px 0;
+        font-size: 14px;
+        padding: 10px;
+      }
+  
+      /* Se sobrescribe el comportamiento para el nav de secciones, que ahora se mostrará en fila */
+      .menu-secciones {
+        display: flex;
+        flex-direction: row;
+      }
+  
+      .menu-secciones a {
+        margin: 0 10px;
+      }
+  
+      .barra-mensaje {
+        font-size: 16px;
+        padding: 14px;
+      }
+  
+      section {
+        padding: 20px 10px;
+      }
+  
+      .botones button {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-   
-
-    
+  <!-- Menú principal -->
   <nav>
     <a href="index.html">Inicio</a>
     <a href="sobre-nosotros.html">Sobre Nosotros</a>
     <a href="calculadora.html">Calculadora de Envíos</a>
-</nav>
-
-<div class="barra-mensaje">
+  </nav>
+  
+  <div class="barra-mensaje">
     <span class="mensaje">¡Aprovecha un 15% de descuento en tu envío! 📦 Envíos rápidos y seguros a Cuba.</span>
-</div>
-
-<main>
+  </div>
+  
+  <main>
     <section id="inicio">
-        <h2>Bienvenido a CubaMax</h2>
-        <p>Enviamos tus paquetes a Cuba de manera rápida y segura.</p>
+      <h2>Bienvenido a CubaMax</h2>
+      <p>Enviamos tus paquetes a Cuba de manera rápida y segura.</p>
     </section>
-
+  
+    <!-- Menú de secciones: se le asigna la clase "menu-secciones" para mantenerlo en fila en móviles -->
     <section id="menu">
-        <nav>
-            <a href="#alimentos">Alimentos</a>
-            <a href="#combos">Combos</a>
-            <a href="#vehiculos">Vehículos</a>
-        </nav>
+      <nav class="menu-secciones">
+        <a href="#alimentos">Alimentos</a>
+        <a href="#combos">Combos</a>
+        <a href="#vehiculos">Vehículos</a>
+      </nav>
     </section>
-
+  
     <section id="productos">
-        <h2>PRODUCTOS</h2>
-
-        <div class="productos-container">
-            <!-- Producto: Saco de Arroz (50kg) -->
-            <article class="producto" id="alimentos" data-nombre="Saco de Arroz (50kg)" data-precio="55 USD" data-info="Arroz de alta calidad, seleccionado y empacado para garantizar frescura y sabor. Ideal para preparar platos tradicionales con un grano suelto y consistente.">
-                <img src="FB_IMG_1740937167535.jpg" alt="Saco de Arroz (50kg)" class="producto-img">
-                <div class="producto-info">
-                    <div class="precio">$55 USD</div>
-                    <div class="botones">
-                        <button class="agregar-carrito">Agregar al carrito</button>
-                        <button class="detalles" onclick="mostrarDetalles('Saco de Arroz (50kg)', 'Arroz de alta calidad, seleccionado y empacado para garantizar frescura y sabor. Ideal para preparar platos tradicionales con un grano suelto y consistente.')">Detalles</button>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Producto: Saco de Harina (50kg) -->
-            <article class="producto" data-nombre="Saco de Harina (50kg)" data-precio="60 USD" data-info="Harina de trigo refinada y de calidad premium, ideal para panadería, repostería y cocina en general. Asegura una textura suave y esponjosa en todas tus recetas.">
-                <img src="eca021f68c354e021b25ed6c09187066.jpg" alt="Saco de Harina (50kg)" class="producto-img">
-                <div class="producto-info">
-                    <div class="precio">$60 USD</div>
-                    <div class="botones">
-                        <button class="agregar-carrito">Agregar al carrito</button>
-                        <button class="detalles" onclick="mostrarDetalles('Saco de Harina (50kg)', 'Harina de trigo refinada y de calidad premium, ideal para panadería, repostería y cocina en general. Asegura una textura suave y esponjosa en todas tus recetas.')">Detalles</button>
-                    </div>
-                </div>
-            </article>
-        </div>
+      <h2>PRODUCTOS</h2>
+  
+      <div class="productos-container">
+        <!-- Producto: Saco de Arroz (50kg) -->
+        <article class="producto" id="alimentos" data-nombre="Saco de Arroz (50kg)" data-precio="55 USD" data-info="Arroz de alta calidad, seleccionado y empacado para garantizar frescura y sabor. Ideal para preparar platos tradicionales con un grano suelto y consistente.">
+          <img src="FB_IMG_1740937167535.jpg" alt="Saco de Arroz (50kg)" class="producto-img">
+          <div class="producto-info">
+            <div class="precio">$55 USD</div>
+            <div class="botones">
+              <button class="agregar-carrito">Agregar al carrito</button>
+              <button class="detalles" onclick="mostrarDetalles('Saco de Arroz (50kg)', 'Arroz de alta calidad, seleccionado y empacado para garantizar frescura y sabor. Ideal para preparar platos tradicionales con un grano suelto y consistente.')">Detalles</button>
+            </div>
+          </div>
+        </article>
+  
+        <!-- Producto: Saco de Harina (50kg) -->
+        <article class="producto" data-nombre="Saco de Harina (50kg)" data-precio="60 USD" data-info="Harina de trigo refinada y de calidad premium, ideal para panadería, repostería y cocina en general. Asegura una textura suave y esponjosa en todas tus recetas.">
+          <img src="eca021f68c354e021b25ed6c09187066.jpg" alt="Saco de Harina (50kg)" class="producto-img">
+          <div class="producto-info">
+            <div class="precio">$60 USD</div>
+            <div class="botones">
+              <button class="agregar-carrito">Agregar al carrito</button>
+              <button class="detalles" onclick="mostrarDetalles('Saco de Harina (50kg)', 'Harina de trigo refinada y de calidad premium, ideal para panadería, repostería y cocina en general. Asegura una textura suave y esponjosa en todas tus recetas.')">Detalles</button>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
-</main>
-
-<div id="cartel-detalles" class="cartel-detalles">
+  </main>
+  
+  <div id="cartel-detalles" class="cartel-detalles">
     <p id="info-producto"></p>
     <button onclick="cerrarCartel()">Cerrar</button>
-</div>
-
-<footer>
+  </div>
+  
+  <footer>
     <p>&copy; 2025 CubaMax. Todos los derechos reservados.</p>
-</footer>
-
-
-
-    <script>
-      document.querySelectorAll(".agregar-carrito").forEach(boton => {
-          boton.addEventListener("click", function () {
-              let producto = this.closest(".producto");
-              let nombre = producto.getAttribute("data-nombre");
-              let precio = producto.getAttribute("data-precio");
-    
-              // Redirigir a la calculadora con los datos del producto
-              window.location.href = `calculadora.html?nombre=${encodeURIComponent(nombre)}&precio=${encodeURIComponent(precio)}`;
-          });
+  </footer>
+  
+  <script>
+    document.querySelectorAll(".agregar-carrito").forEach(boton => {
+      boton.addEventListener("click", function () {
+        let producto = this.closest(".producto");
+        let nombre = producto.getAttribute("data-nombre");
+        let precio = producto.getAttribute("data-precio");
+  
+        // Redirigir a la calculadora con los datos del producto
+        window.location.href = `calculadora.html?nombre=${encodeURIComponent(nombre)}&precio=${encodeURIComponent(precio)}`;
       });
-    
-      document.querySelectorAll(".detalles").forEach(boton => {
-          boton.addEventListener("click", function () {
-              let producto = this.closest(".producto");
-              let nombre = producto.getAttribute("data-nombre");
-              let precio = producto.getAttribute("data-precio");
-    
-              document.getElementById("info-producto").textContent = `Detalles de ${nombre}: Precio $${precio}`;
-              let cartel = document.getElementById("cartel-detalles");
-              cartel.style.display = "block";
-              cartel.style.animation = "fadeIn 0.3s forwards";
-          });
+    });
+  
+    document.querySelectorAll(".detalles").forEach(boton => {
+      boton.addEventListener("click", function () {
+        let producto = this.closest(".producto");
+        let nombre = producto.getAttribute("data-nombre");
+        let precio = producto.getAttribute("data-precio");
+  
+        document.getElementById("info-producto").textContent = `Detalles de ${nombre}: Precio ${precio}`;
+        let cartel = document.getElementById("cartel-detalles");
+        cartel.style.display = "block";
+        cartel.style.animation = "fadeIn 0.3s forwards";
       });
-    
-      function cerrarCartel() {
-          let cartel = document.getElementById("cartel-detalles");
-          cartel.style.animation = "fadeOut 0.3s forwards";
-          setTimeout(() => {
-              cartel.style.display = "none";
-          }, 300);
-      }
-    </script>
-
+    });
+  
+    function cerrarCartel() {
+      let cartel = document.getElementById("cartel-detalles");
+      cartel.style.animation = "fadeOut 0.3s forwards";
+      setTimeout(() => {
+        cartel.style.display = "none";
+      }, 300);
+    }
+  </script>
 </body>
 </html>
