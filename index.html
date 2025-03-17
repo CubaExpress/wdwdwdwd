@@ -50,6 +50,29 @@
       background: rgba(0, 0, 0, 0.2);
       transform: scale(1.05);
     }
+    
+    /* Menú de secciones */
+    .menu-secciones {
+      display: flex;
+      justify-content: center;
+      background: #e3e3e3;
+      padding: 18px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .menu-secciones a {
+      color: #333;
+      text-decoration: none;
+      padding: 13px 25px;
+      font-size: 18px;
+      margin: 0 10px;
+      border-radius: 12px;
+      transition: 0.3s;
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .menu-secciones a:hover {
+      background: rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
   
     .barra-mensaje {
       background: linear-gradient(135deg, #8fd3f4, #84c1f5);
@@ -230,7 +253,8 @@
         padding: 25px;
       }
   
-      .menu-principal a {
+      .menu-principal a,
+      .menu-secciones a {
         font-size: 16px;
         padding: 12px 20px;
       }
@@ -278,10 +302,11 @@
         padding: 10px;
       }
   
-      /* El menú de secciones ya se muestra en fila */
+      /* Mantener estilos para el menú de secciones */
       .menu-secciones {
         display: flex;
         flex-direction: row;
+        justify-content: center;
       }
       .menu-secciones a {
         margin: 0 10px;
@@ -306,7 +331,7 @@
   </style>
 </head>
 <body>
-  <!-- Menú principal con clase "menu-principal" -->
+  <!-- Menú principal -->
   <nav class="menu-principal">
     <a href="index.html">Shop</a>
     <a href="sobre-nosotros.html">Remesas</a>
